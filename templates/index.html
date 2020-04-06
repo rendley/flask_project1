@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h2>Новости</h2>
+
+{% for news in newslist %}
+
+<div class="news">
+    <br>
+    <h3><a href="{{ news.url }}">{{news.title}}</a></h3>
+    <br>
+    {{news.published}}
+    <hr>
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -12,19 +12,23 @@
 {% block content %}
 
 
+{% for news in newslist %}
+
     <article class="media content-section">
 
         <div class="media-body">
             <div class="article-metadata">
                 <a class="mr-5" href="#">Автор</a>
-                <small class="text-muted">Дата публикации:  20-02-2020</small>
+                <small class="text-muted">Дата публикации: {{ news.published.strftime('%d.%m.%Y') }}</small>
             </div>
 
-            <h2><a class="article-title" href="">Заголовок</a></h2>
+            <h2><a class="article-title" href="{{ news.url }}">{{news.title}}</a></h2>
             <p class="article-content"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto voluptate quibusdam voluptas, laboriosam doloribus blanditiis sapiente ad rem ratione sint commodi modi adipisci cum officia illum quis omnis atque nam eveniet dolor hic? Obcaecati ad adipisci ipsa deserunt consequuntur! Quod cum corrupti itaque et nobis perferendis numquam distinctio dolorem! Sed soluta porro impedit excepturi omnis ipsum magni quam molestias consequuntur, corrupti nam non eos perferendis amet voluptatum, adipisci illum ullam optio, tempora qui deserunt quia inventore. Assumenda rem quae ipsum eveniet eos, ullam, placeat quas molestias hic natus vitae dolorem consequuntur laboriosam pariatur voluptate beatae voluptatum iste totam. Minima odit repellendus itaque dolorem iusto quo cupiditate obcaecati! </p>
 
         </div>
     </article>
 
+
+{% endfor %}
 
 {% endblock %}

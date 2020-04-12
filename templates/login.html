@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+
+{% block content_title %}
+
+<div class="col-md-2">
+    <h1>{{ title }} </h1>
+</div>  
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<main role="main" class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+                     
+
+            <form action="" method="POST">
+                {{ form.hidden_tag() }} 
+                <div class="form-group">
+                    {{ form.username.label }} <br>
+                    {{ form.username() }}
+                <div>
+                        <div class="form-group">
+                            {{ form.password.label }} <br>
+                            {{ form.password() }}
+                        </div>
+
+                        <div class="form-group form-check"> 
+                            {{ form.remember_me() }} 
+                            {{ form.remember_me.label(class_="form-check-label")}}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.submit() }}
+                        </div>
+                        <p></p>
+            </form>          
+            
+        </div>
+     
+    </div> 
+</main>
+
+{% endblock %}

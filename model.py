@@ -14,7 +14,7 @@ class News(db.Model):
 
     def __repr__(self):
         return f"<News {self.title}, {self.url}>"
-
+# UserMixin (is_authenticated)
 class User(db.Model, UserMixin): 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True) # index служит для фильтрации запросов 
@@ -23,12 +23,16 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(50))
 
 
-
+    # get password user and hash password
     def set_password(self, password):
         self.password = generate_password_hash(password)
-
+    # get password of form user login and callate password hash with password hash database 
     def check_password(self, password):
-        return check_password_hash(self.password, password)    
+        return check_password_hash(self.password, password)   
+
+    @property # checks if the admin in the session routs admin
+    def is_admin(self):
+        return self.role == "admin" 
 
 
     def __repr__(self): 

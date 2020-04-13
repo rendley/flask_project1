@@ -26,14 +26,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{{url_for('news')}}">News</a>
+              <a class="nav-item nav-link" href="{{ url_for('news') }}">News</a>
               <a class="nav-item nav-link" href="/">Home</a>
               <a class="nav-item nav-link" href="/">English</a>
               <a class="nav-item nav-link" href="/about">About</a>
             </div>
 
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link" href="{{ url_for('user.login') }}">Login</a>
               <a class="nav-item nav-link" href="/register">Register</a>
             </div>
           </div>

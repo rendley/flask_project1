@@ -1,34 +1,29 @@
 from flask import Blueprint
 from flask import render_template
-from app.model import db
 
 from .forms import LoginForm
 from flask import current_app
 
-from flask_login import login_user, logout_user, current_user, login_required
-from app.model import db
+from flask_login import login_user, logout_user, current_user
+from app.db import db
 from .models import User
-# from app import 
 
 from flask import redirect, url_for, flash
-
 
 
 blueprint = Blueprint("user", __name__, url_prefix="/user")
 
 
-
-
-
 @blueprint.route("/login")
 def login():
-    if current_user.is_authenticated: 
+    if current_user.is_authenticated: #check user if authenticated redirect index button login does not work
         return redirect(url_for("index"))
     title = "Авторизация"
     form = LoginForm()
     return render_template("user/login.html", form=form, title=title)
 
-@blueprint.route("/process-login", methods=["POST"])
+
+@blueprint.route("/process-login", methods=["POST", "GET"])
 def process_login():
     form = LoginForm() 
     if form.validate_on_submit(): # check form

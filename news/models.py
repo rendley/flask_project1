@@ -1,7 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-
-db = SQLAlchemy()
+from app.model import db
 
 
 class News(db.Model):

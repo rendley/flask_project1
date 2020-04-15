@@ -1,8 +1,9 @@
 from flask import Blueprint
 from flask import Flask
 from flask import render_template
-from app.newss import get_data_news
+from app.news_python_org import get_data_news
 from app.db import db
+
 
 blueprint = Blueprint("news",__name__, url_prefix="/news" )
 

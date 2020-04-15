@@ -1,6 +1,7 @@
 from flask import Flask
 from app import config
 from flask import render_template
+
 from app.weather import weather_by_city
 
 from flask import current_app
@@ -34,8 +35,8 @@ def create_app():
 
     @app.route('/')
     def index():
-        title = "Flask"
-        content_title = "Flask Blog"
+        title = "Блог"
+        content_title = "Ежедневные заметки"
         weather = weather_by_city(current_app.config["WEATHER_DEFAULT_CITY"])
         print(weather)
         return render_template ("index.html", title=title, content_title=content_title, weather=weather)

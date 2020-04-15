@@ -19,27 +19,65 @@
 <body>
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <div class="container">
-          <a class="navbar-brand mr-4" href="/">Flask</a>
+        <!-- <div class="container"> -->
+          <a class="navbar-brand mr-4" href="/">Заметки</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{{ url_for('news.news') }}">News</a>
-              <a class="nav-item nav-link" href="/">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('news.news') }}">News Python</a>
+              <a class="nav-item nav-link" href="/">Habr Python</a>
               <a class="nav-item nav-link" href="/">English</a>
+              <a class="nav-item nav-link" href="/">Допы</a>
               <a class="nav-item nav-link" href="/about">About</a>
+               <form class="form-inline my-2 my-lg-0" >
+                <input class="form-control mr-sm-2" style="margin-left: 100px; width: 750px; " type="search" placeholder="Search" aria-label="Search" >
+                <button class="btn btn-dark my-2 my-sm-0" style="margin-left: 10px;" type="submit" >Поиск</button>
+              </form>
             </div>
+
+             
 
             <div class="navbar-nav">
               <a class="nav-item nav-link" href="{{ url_for('user.login') }}">Login</a>
               <a class="nav-item nav-link" href="/register">Register</a>
             </div>
+
           </div>
-        </div>
+        <!-- </div> -->
       </nav>
     </header>
+
+      <!-- <nav class="navbar navbar-expand-md navbar-dark bg-steel " style="margin-top: 0px;">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Заметки</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('news.news') }}">News Python</a>
+              <a class="nav-item nav-link" href="/">Habr Python</a>
+              <a class="nav-item nav-link" href="/">English</a>
+              <a class="nav-item nav-link" href="/">Допы</a>
+              <a class="nav-item nav-link" href="/about">About</a>
+               <form class="form-inline my-2 my-lg-0" >
+                <input class="form-control mr-sm-2" style="margin-left: 100px; width: 200px; " type="search" placeholder="Search" aria-label="Search" >
+                <button class="btn btn-dark my-2 my-sm-0" style="margin-left: 10px;" type="submit" >Поиск</button>
+              </form>
+            </div>
+
+             
+
+            <div class="navbar-nav">
+              <a class="nav-item nav-link" href="{{ url_for('user.login') }}">Login</a>
+              <a class="nav-item nav-link" href="/register">Register</a>
+            </div>
+
+          </div>
+        </div>
+      </nav> -->
 
     <main role="main" class="container">
       <div class="row">

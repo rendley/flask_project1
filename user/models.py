@@ -6,7 +6,7 @@ from app.db import db
 # UserMixin (is_authenticated)
 class User(db.Model, UserMixin): 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), index=True, unique=True) # index служит для фильтрации запросов 
+    username = db.Column(db.String(64), index=True, unique=True) # index = fast filter request
     password = db.Column(db.String(64))
     role = db.Column(db.String(10), index=True) 
     email = db.Column(db.String(50))
@@ -19,7 +19,8 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)   
 
-    @property # checks if the admin in the session routs admin
+    # checks if the admin in the session routs admin
+    @property 
     def is_admin(self):
         return self.role == "admin" 
 

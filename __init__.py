@@ -1,5 +1,4 @@
 from flask import Flask
-from app import config
 from flask import render_template
 
 from app.weather import weather_by_city
@@ -9,6 +8,9 @@ from flask import current_app
 from flask_login import LoginManager
 from app.db import db
 from app.user.models import User
+
+# migration
+from flask_migrate import Migrate
 
 
 from app.user.views import blueprint as user_blueprint
@@ -20,6 +22,10 @@ def create_app():
     app.config.from_pyfile("config.py")
     db.init_app(app)
 
+    # init process migration
+    # export(set) FLASK_APP=app && flask db init
+    migrate = Migrate(app, db)
+
     login_manager = LoginManager()
     login_manager.init_app(app)
     login_manager.login_view = "user.login"
@@ -28,7 +34,8 @@ def create_app():
     app.register_blueprint(news_blueprint)
     app.register_blueprint(admin_blueprint)
 
-    # when user open page, login manager get from cookies user_id and put user_id func load_user
+    # when user open page, login manager get from cookies user_id
+    # and put user_id func load_user
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(user_id)

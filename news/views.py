@@ -13,7 +13,7 @@ blueprint = Blueprint("news",__name__, url_prefix="/news" )
 def news():
     title = "Новости"
     content_title = "Новости Python"
-    news_list = get_data_news()      
+    news_list = get_data_news()     
     return render_template ("news/news.html", title=title, 
                             newslist=news_list, content_title=content_title
                             )

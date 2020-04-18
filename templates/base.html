@@ -40,8 +40,26 @@
              
 
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="{{ url_for('user.login') }}">Login</a>
-              <a class="nav-item nav-link" href="{{ url_for('user.registration') }}">Register</a>
+              {% if current_user.is_authenticated %}
+
+                  <span class="nav-link"> Привет {{ current_user.username }} !</span>
+
+                        {% if current_user.is_admin %} <!--если пришел админ показываем админку-->
+                                             
+                            <a class="nav-link" href="{{ url_for('admin.admin') }}">Admin</a>
+                                        
+                        {% endif %}
+
+                  <a class="nav-item nav-link" href="{{ url_for('user.logout') }}">Выйти</a>
+
+              {% else %}
+
+              <a class="nav-item nav-link" href="{{ url_for('user.login') }}">Войти</a>
+              <a class="nav-item nav-link" href="{{ url_for('user.registration') }}">Регистрация</a>
+
+              {% endif %}
+
+
             </div>
 
           </div>

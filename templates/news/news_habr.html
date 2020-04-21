@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+
+{% block content_title %}
+
+<h1>{{content_title}}</h1>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+{% for news in news_habr %}
+
+    <article class="media content-section">
+
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-5" href="#">Habr</a>
+                <small class="text-muted">Дата публикации: {{ news.published.strftime('%d.%m.%Y') }}</small>
+            </div>
+
+            <h3><a class="article-title" href="{{ news.url }}">{{news.title}}</a></h3>
+            <p class="article-content"></p>
+
+        </div>
+    </article>
+
+
+{% endfor %}
+
+{% endblock %}

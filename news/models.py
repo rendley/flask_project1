@@ -1,5 +1,5 @@
-from app.model import db
-
+from app.db import db
+from datetime import datetime
 
 class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -8,5 +8,7 @@ class News(db.Model):
     published = db.Column(db.DateTime, nullable=False)
     text = db.Column(db.Text, nullable=True)
 
+
     def __repr__(self):
         return f"<News {self.title}, {self.url}>"
+

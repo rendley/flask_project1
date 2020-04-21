@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content_title %}
+
+<h1>{{content_title}}</h1>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-10 news-content">
+
+        {{ news.text|safe }} <!-- safe filtr jinja from injectionsт-->
+
+    </div>
+
+</div>
+
+{% endblock %}

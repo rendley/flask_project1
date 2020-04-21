@@ -84,3 +84,9 @@ body {
       border: 1px solid #801d1d;
       padding-top: 2em;
   }
+
+  .news-content img {
+    max-width: 100%;
+
+
+  }

@@ -24,8 +24,8 @@ def news():
 @blueprint.route('/news')
 def news_habr():
     title = "Новости Python"
-    content_title = "Новости Python"
-    news_habr = News.query.all()    
+    content_title = "Новости Python Habr"
+    news_habr = News.query.order_by(News.published.desc()).all() # sorted news / revers .asc()
     return render_template ("news/news_habr.html", title=title, 
                             news_habr=news_habr, content_title=content_title
                             )

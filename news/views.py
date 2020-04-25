@@ -7,6 +7,9 @@ from app.news.models import News
 
 from flask import abort
 
+from app.news.forms import CommentForm
+
+
 
 blueprint = Blueprint("news",__name__, url_prefix="/news" )
 
@@ -36,5 +39,6 @@ def single_news(news_id):
     my_news = News.query.filter(News.id == news_id).first()
     if not my_news: 
         abort(404)  # check 
+    comment_form = CommentForm()
     return render_template("news/text_news.html", title=title, 
-                            content_title=my_news.title, news=my_news)
+                            content_title=my_news.title, news=my_news, comment_form=comment_form)

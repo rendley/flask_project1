@@ -14,6 +14,42 @@
 
         {{ news.text|safe }} <!-- safe filtr jinja from injectionsт-->
 
+<hr>
+
+        <h3 style="margin-top: 2em;">Комментарии:</h3>
+
+
+        {% if news.comments %}
+
+            
+ 
+            {% for comment in news.comments %}
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">{{ comment.text }}</p>
+                            <p class="card-text">
+                                <small>Опубликовано: {{ comment.published.strftime('%d.%m.%Y') }} |
+                                    Автор: {{ comment.user.username }}</small>
+                            </p>
+                        </div>
+                    </div>
+            {% endfor %}
+        {% endif %}
+        <!--comment form-->
+        <!--add comment only for auth user-->
+        <!--check auth-->
+        {% if current_user.is_authenticated %} 
+                <form action="" method="POST" style="margin-bottom: 3em;">
+                    {{ comment_form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ comment_form.comment_text.label }}
+                        {{ comment_form.comment_text() }}
+                    </div>
+                    {{ comment_form.submit() }}
+                </form>
+
+        {% endif %}
+
     </div>
 
 </div>

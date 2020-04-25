@@ -17,17 +17,28 @@
 <article class="media content-section">
 
     <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-5" href="#">Habr</a>
-            <small class="text-muted">Дата публикации: {{ news.published.strftime('%d.%m.%Y') }}</small>
-        </div>
+        
 
         <h3>
             <a class="article-title" href="{{ url_for('news.single_news', news_id=news.id) }}">
                 {{news.title}}
             </a>
         </h3>
-        <p class="article-content"></p>
+        <div class="article-metadata">
+            <a class="mr-5" href="#">Habr</a>
+            <small class="text-muted">Дата публикации: {{ news.published.strftime('%d.%m.%Y') }} 
+                | Количество комментариев {{ news.comments_count() }}</small>
+            
+        </div>
+        <p class="article-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Quis sapiente quae recusandae, dignissimos soluta veritatis ab nemo atque molestias sequi, 
+            perferendis aspernatur eos. Soluta rem optio incidunt accusantium hic totam esse aspernatur 
+            autem impedit, perferendis expedita, dolorum tempora architecto sed explicabo voluptatibus 
+            molestiae illo repellendus atque, repudiandae placeat. Nobis similique laudantium aut 
+            a corrupti perferendis? Voluptas pariatur earum maiores sapiente harum dolores ipsa quod 
+            magni labore exercitationem enim sequi minus expedita modi mollitia similique minima 
+            excepturi ut atque, placeat adipisci. Sequi dolor architecto fuga omnis dolorem repellendus 
+            error repudiandae atque quia modi nobis, voluptates temporibus id ipsa animi labore obcaecati.</p>
 
     </div>
 </article>

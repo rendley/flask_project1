@@ -3,11 +3,14 @@ from flask import Flask
 from flask import render_template
 from app.news_python_org import get_data_news
 from app.db import db
-from app.news.models import News
+from app.news.models import News, Comment
 
 from flask import abort
 
 from app.news.forms import CommentForm
+from flask import redirect, request, redirect, url_for, current_app, flash
+from flask_login import current_user, login_required
+from app.utils import get_redirect_target
 
 
 
@@ -39,6 +42,17 @@ def single_news(news_id):
     my_news = News.query.filter(News.id == news_id).first()
     if not my_news: 
         abort(404)  # check 
-    comment_form = CommentForm()
+    comment_form = CommentForm(news_id=my_news.id)
     return render_template("news/text_news.html", title=title, 
                             content_title=my_news.title, news=my_news, comment_form=comment_form)
+
+@blueprint.route("news/comments/", methods=["POST"])
+@login_required
+def add_comment():
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(text=form.comment_text.data, news_id=form.news_id.data, user_id=current_user.id)
+        db.session.add(comment) 
+        db.session.commit()
+        flash("Коментарий успешно добавлен", "success")
+    return redirect(get_redirect_target())
